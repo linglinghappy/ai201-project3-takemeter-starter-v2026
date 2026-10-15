@@ -54,34 +54,74 @@
      The decision rule is worth a point on its own and it's the thing most
      people leave out. Every taxonomy has a hardest boundary. Name yours. -->
 
-### `label_one`
+### `backed`
 
-**Definition:**
-
-**Example 1:**
->
-
-**Example 2:**
->
-
-### `label_two`
-
-**Definition:**
+**Definition:** A conclusion (a claim or a piece of advice) supported by evidence that directly explains why it's true, where evidence is either a specific, checkable fact from any source (a number, a rule, a study) or the writer's own first-hand experience.
 
 **Example 1:**
+> Do NOT ghost the loan management company. Call and tell them your situation, you’ll enter forbearance, WAY better than defaulting.
 >
+> If you’re in default, call anyways. Do not ghost the loan management company.
+>
+> Default wrecks credit, garnishes future wages, and many other shit things. Forbearance protects against that. It literally only requires proving your situation and notifying them.
 
 **Example 2:**
+> Surprisingly it’s worth something. An F500 company hired me straight off of a no name internship since the stuff I did in it was very useful to what they had an opening for
+
+### `hot_take`
+
+**Definition:** A conclusion about the world or the industry with no evidence offered, or with only a story too small to carry it, whether the tone is confident or hedged.
+
+**Example 1:**
+> The uncomfortable truth here is Big Tech and F500 companies are filled with unpleasant people that break all these rules OP listed because they simply get things done (whether they are actually good at their job is debatable, what matters is many of them put on a good show for leadership and play the corporate game well).
 >
+> And guess what, unpleasant people who are in the position of hiring often hire (or even select for) other unpleasant people.
+>
+> This is all to say, many new grads/early career folks will pretty quickly learn being a normal person is unfortunately not selected for at a lot of tech companies and very few interviewers can even glean that info from a ~1hr interview.
+
+**Example 2:**
+> Hear me out. A friend who did math at an ivy league university got a job at the big3 consulting with no internship. It is crazy how much prestige open up the door. So for those losers who said “prestige does not matter” you should put yourself into current fresh grad’s shoes. It is the same for swe which is a prestige whore.
+
+### `vent`
+
+**Definition:** The writer describes their own situation and how it feels, without drawing any conclusion about the world or telling anyone what to do, even if they include numbers.
+
+**Example 1:**
+> 150 apps a few oas 0 interviews it’s over for me
+
+**Example 2:**
+> lost track atp, i did multiple OAs and got into two interview processes for new grad (i got more interview processes for entry level positions than i did for new grad smh). flunked one of them and the other one i'm not very confident about my chances of passing. i have an offer on the table but not something that i'm content with so i'm still applying and hoping for the best :(
+
+### `advice`
+
+**Definition:** Tells the reader what action to take (try, you should, do X, don't do Y) without evidence for it; a reason that is itself an unsupported claim doesn't count as evidence.
+
+**Example 1:**
+> I think the bigger issue is getting past the initial screening. Try referrals and smaller companies too. Your first opportunity doesn’t have to come from a big name company.
+
+**Example 2:**
+> You can't control what you did but only what you can do now and in the future. Just focus on making yourself the best candidate with what you can control instead of focusing on what you can't.
 
 ### The hardest boundary
 
-**Which two labels:**
+**Which two labels:** `backed` and `hot_take`
 
 **The decision rule I used every time:**
 <!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
      if the tone is heated." -->
 
+Personal experience counts as evidence in this community, but only when it is the writer's own first-hand experience and it directly explains the conclusion. If the story is second-hand ("a friend…") or one story is stretched into a claim about the whole industry, it's `hot_take`, even if it sounds reasonable. So "an F500 company hired me because my internship work matched their opening" is `backed`, and "my friend got into consulting with no internship, so SWE is a prestige whore" is `hot_take`.
+
+Evidence doesn't have to be personal: a specific, checkable fact from any source counts ("BLS projects software jobs to grow 17%, so CS isn't dying" is `backed`), and a specific number counts even without a link. And `backed` needs a conclusion: numbers with no conclusion drawn from them ("referrals got me 4 interviews out of 12, cold apps 0 out of 200, I'm exhausted") are `vent`.
+
+**Other rules I apply in order:**
+
+1. Does evidence directly support a conclusion? → `backed`
+2. Is it only about the writer's own situation and feelings, with no conclusion about the world? → `vent`. One general claim ("this industry is broken") makes it not `vent`.
+3. Is it mainly telling the reader to do something? → `advice`
+4. Otherwise, an unsupported conclusion about the world → `hot_take`, confident or hedged ("maybe it's just me but…" still counts).
+
+Sarcasm is labelled by what it actually means, not its literal words. When a post mixes types (a claim plus some advice), I label it by what most of its words are doing.
 
 
 ---
@@ -162,15 +202,15 @@ of next unit's variance. -->
 
 **Moment 1**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* While designing my labels, I proposed adding a fourth label, `advice`, to the three-label plan (`backed` / `hot_take` / `vent`), because unsupported advice was one of the most common things I saw on r/csMajors. I asked the AI to evaluate that choice, and then checked my own understanding of it: I said `advice` responds to the OP's personal case with an action, and `hot_take` is an opinion that doesn't share a story as evidence.
+- *What came back:* It agreed `advice` matches how the community talks, but pointed out a conflict: a post like the student-loan comment is advice *and* backed by facts. It suggested checking for support first (supported → `backed`, even if it's advice). It also flagged two problems with my definitions: the model only sees one comment, so "responds to the OP" can't be a feature, and a story isn't automatically evidence (the "my friend got into consulting" post shares a story but is still a `hot_take`).
+- *What I changed:* I kept four labels and adopted the support-first rule. I removed "responds to the OP" from `advice` and defined it by the text alone: it tells the reader what action to take, with no reason given. I rewrote `hot_take` to cover a story too small to carry the conclusion. 
 
 **Moment 2**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* A stress test. I gave the AI my four definitions and asked for eight r/csMajors-style posts that sit on the boundaries, plus two warm-ups, and labelled them myself before seeing any answers.
+- *What came back:* Ten posts. When we compared, four of my labels contradicted my own rules: I called "I got my Amazon offer after 300 LeetCode problems, so grinding works for everyone" `backed`, but it's one story stretched to everyone; I called "referrals got me 4 of 12, cold apps 0 of 200, I'm exhausted" `backed`, but it draws no conclusion; I called a BLS job-growth stat `hot_take` because it wasn't personal experience; and I called "my TA told me…" `backed` even though it's second-hand. Four more showed gaps the rules didn't cover: a hedged claim ("maybe it's just me but…"), a self-report followed by "this industry is broken", advice whose only reason was another unsupported claim, and sarcasm.
+- *What I changed:* I rewrote the definitions: evidence is a checkable fact from any source or first-hand experience; `backed` needs a conclusion; one general claim makes a post not `vent`; an unsupported reason doesn't stop advice being `advice`. I also dropped "confident" from `hot_take`. Tone was the distinction I noticed most in Milestone 1, but the test showed it left hedged, unsupported claims with nowhere to go. I added an ordered decision rule, and I label sarcasm by its meaning. The AI drafted the new wording from the rules I agreed to.
 
 **Pre-labelling disclosure:**
 

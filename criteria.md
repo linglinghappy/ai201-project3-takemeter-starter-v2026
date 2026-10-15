@@ -51,65 +51,76 @@ whether you hit them:
 
 ---
 
-## 1.
+## 1. Overall accuracy
 
-<!-- Your criterion. It must name a number. -->
+On the test split, `accuracy` is at least 0.60 in all three seeds of the
+Unit 6 "before" run.
 
-
-
-**Why this target:**
-
-
-
----
-
-## 2.
-
-<!-- Your criterion. -->
-
-
-
-**Why this target:**
-
-
+**Why this target:** I have four labels, so a random guess gets about 0.25.
+Always guessing my most common label (probably `advice` or `hot_take`) gets
+about 0.35 to 0.40. 0.60 is clearly better than both. My test split is only
+about 30 posts, so I did not set it higher.
 
 ---
 
-## 3.
+## 2. Per-label performance
 
-<!-- Your criterion. -->
+In all three seeds of the Unit 6 "before" run, `hot_take`, `vent` and
+`advice` each have a per-label F1 of at least 0.50. `backed` has a per-label
+F1 of at least 0.40. If a label has 0 posts in a seed's test split, that
+seed counts as a miss for that label.
 
-
-
-**Why this target:**
-
-
-
----
-
-## 4.
-
-<!-- Your criterion. -->
-
-
-
-**Why this target:**
-
-
+**Why this target:** `backed` is my hardest label. It was rare on r/csMajors:
+I found only 2 or 3 clear examples in the 50 comments I read. In my stress
+test, all 4 of my mistakes involved `backed`. It will also have only about
+5 posts in the test split, so its score will jump between seeds. That is why
+its target is lower than the other three.
 
 ---
 
-## 5.
+## 3. Balance
 
-<!-- Your criterion. -->
+In the final `labels.csv`, every label has at least 30 posts, and no label
+is more than 40% of all rows.
 
-
-
-**Why this target:**
-
-
+**Why this target:** 30 posts means about 5 land in the test split. With
+fewer, the F1 for that label means almost nothing. On r/csMajors, `advice`
+and `hot_take` are very common and `backed` is rare. Without a limit,
+`backed` could end up tiny. If I am short, I will look for threads with data,
+like application stats or salary comparisons.
 
 ---
+
+## 4. Consistency
+
+At least three days after labelling my 20 `cold` posts, I re-label them
+without looking at my first labels. I save this as `relabel_check.csv` with
+columns `text`, `first_label`, `second_label`, and write both dates at the
+top of the README Dataset section. At least 16 of 20 rows have `first_label`
+exactly equal to `second_label`.
+
+**Why this target:** In my stress test, I broke my own rules on 4 of 10
+posts. So I know labelling is not easy for me, and 100% is not realistic.
+But if I agree with myself less than 80% of the time, the model gets a messy
+signal. Then a low score would be my fault, not the model's.
+
+---
+
+## 5. Confidence
+
+In all three seeds of the Unit 6 "before" run,
+`accuracy_most_confident_third` minus `accuracy_least_confident_third` is
+at least 0.15.
+
+**Why this target:** Some of my posts are clear, like "150 apps, 0
+interviews, it's over for me". Others sit on a boundary, like a personal
+story that may or may not support the claim. The model should be more sure
+on the clear ones. If being confident does not make it more accurate, its
+confidence is useless to a reader. One risk: with about 30 test posts, each
+third is only about 10 posts, so 0.15 is a gap of just 1 or 2 posts.
+
+---
+
 
 <!-- ─────────────────────────────────────────────────────────────────────────
      UNIT 6 — read this before you change anything above.
