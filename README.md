@@ -140,10 +140,11 @@ Say so plainly — the disclosure is required, not penalised. -->
 
 | Label | Count | Share |
 |---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-| **Total** |  | 100% |
+| `hot_take` | 82 | 39.8% |
+| `vent` | 51 | 24.8% |
+| `backed` | 37 | 18.0% |
+| `advice` | 36 | 17.5% |
+| **Total** | 206 | 100% |
 
 **Three hard cases**
 
@@ -151,25 +152,25 @@ Say so plainly — the disclosure is required, not penalised. -->
      been, and what you chose. These are worth more than the easy 190. -->
 
 **1.**
-> *The post:*
+> *The post:* "Yeah that sucks. Annoying in this industry that one interviewer can have personal bias or some other issue going on and tank an entire interview process and job opportunity. Had it happen several times."
 >
-> *Could have been:*
+> *Could have been:* `vent` or `backed`
 >
-> *I chose, because:*
+> *I chose, because:* In my cold pass I chose `vent`, because the tone is frustrated and it opens with "that sucks". On review it should be `backed`. It makes a general claim about the industry (one interviewer can tank a whole process), so by rule 2 it can't be `vent`. And "had it happen several times" is the writer's own first-hand experience, and it directly explains that claim. I left the cold label unchanged in `labels.csv` so the agreement check measures my real first pass.
 
 **2.**
-> *The post:*
+> *The post:* "renaissance? CS was over-saturated previously due to the hiring spree during scaling phase of big tech. it is just getting back to baseline."
 >
-> *Could have been:*
+> *Could have been:* `vent` or `hot_take`
 >
-> *I chose, because:*
+> *I chose, because:* In my cold pass I chose `vent`, because it sounded tired and negative. On review it should be `hot_take`. There is nothing about the writer in it, just a conclusion about the whole industry with no evidence given. This one taught me that tone doesn't decide the label: a gloomy post is only `vent` if it is about the writer's own situation.
 
 **3.**
-> *The post:*
+> *The post:* "Yeah, I could see this. It's just our economy has been a fucking mess for four years now. for there to be a renaissance, The economy has to improve and I'm afraid that it's gonna be a while before that happens.."
 >
-> *Could have been:*
+> *Could have been:* `vent` or `hot_take`
 >
-> *I chose, because:*
+> *I chose, because:* In my cold pass I chose `vent`, because of the feeling words ("fucking mess", "I'm afraid"). On review it should be `hot_take`. The feelings are about the economy, not about the writer's own situation, and the main point is an unsupported prediction (CS won't recover until the economy does). By rule 2, one general claim makes it not `vent`.
 
 ---
 
