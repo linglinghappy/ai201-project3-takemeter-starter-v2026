@@ -42,6 +42,7 @@
 <!-- Your community, and what your classifier sorts posts into. Three or four
      sentences. -->
 
+TakeMeter reads comments from r/csMajors, a Reddit community where CS students and new grads talk about jobs, internships and the job market. It sorts each comment into one of four labels. `backed` is a claim with real evidence. `hot_take` is a claim with no real evidence. `vent` is someone talking about their own situation and feelings. `advice` tells the reader what to do, with no evidence. The goal is to help a reader see which comments they can actually trust.
 
 
 ---
@@ -131,10 +132,14 @@ Sarcasm is labelled by what it actually means, not its literal words. When a pos
 <!-- Where you collected from, how you labelled, your counts, and three hard
      cases. -->
 
-**Where the posts came from:**
+**Where the posts came from:** Public comments from r/csMajors. I copied and pasted them by hand, and I kept each comment whole. The threads cover return offers, interview updates, the new-grad job market, backup majors, AI and coding jobs, and why CS grads like living in NYC. I did not use a scraper.
 
 **How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
 Say so plainly — the disclosure is required, not penalised. -->
+- **20 cold.** I labelled 20 posts first, with only my definitions and no tools. They are marked `cold` in the note column.
+- **3 by myself.** I labelled 3 more posts on my own. They are marked `self-labelled`.
+- **183 pre-labelled.** An AI tool gave a first label to the other 183 posts, using my four definitions and my decision rules. I read every one and fixed the labels I disagreed with. They are marked `pre-labelled`.
+- **Removed 16.** My first file had 222 posts, and `hot_take` was 44%. My balance criterion says no label can be over 40%. So I removed 16 short `hot_take` posts from the NYC thread. They were the most off-topic and repetitive. Now the file has 206 posts.
 
 **Counts per label:**
 
@@ -178,15 +183,26 @@ Say so plainly — the disclosure is required, not penalised. -->
 
 <!-- Your starting model, your settings, and anything you changed and why. -->
 
-**Base model:**
+**Base model:** `distilbert-base-uncased`
 
-**Settings:** <!-- epochs, learning rate, batch size, seed -->
+**Settings:** <!-- epochs, learning rate, batch size, seed --> 3 epochs, learning rate 2e-5, batch size 16, max length 128 tokens, seed 42. I trained on an Apple Silicon GPU (MPS), with torch 2.14.1.
 
-**Anything I changed from the defaults, and why:**
+**Anything I changed from the defaults, and why:** Nothing. I kept every default. This is my first run, so I want a clean starting point to compare against next unit.
 
 **Split sizes:** <!-- train / val / test, and per-label counts in the test
 split. If a label had fewer than about 8 in test, say so — it explains a lot
 of next unit's variance. -->
+
+Train 144 · Val 31 · Test 31
+
+| Label | Train | Val | Test |
+|---|---|---|---|
+| `hot_take` | 58 | 12 | 12 |
+| `vent` | 35 | 8 | 8 |
+| `backed` | 26 | 5 | 6 |
+| `advice` | 25 | 6 | 5 |
+
+`backed` has only 6 posts in the test split, and `advice` has only 5. Both are under 8. One right or wrong answer moves their F1 a lot, so I expect their scores to jump between seeds next unit. `vent` has exactly 8, so it is on the edge.
 
 
 
@@ -213,7 +229,8 @@ of next unit's variance. -->
 - *What came back:* Ten posts. When we compared, four of my labels contradicted my own rules: I called "I got my Amazon offer after 300 LeetCode problems, so grinding works for everyone" `backed`, but it's one story stretched to everyone; I called "referrals got me 4 of 12, cold apps 0 of 200, I'm exhausted" `backed`, but it draws no conclusion; I called a BLS job-growth stat `hot_take` because it wasn't personal experience; and I called "my TA told me…" `backed` even though it's second-hand. Four more showed gaps the rules didn't cover: a hedged claim ("maybe it's just me but…"), a self-report followed by "this industry is broken", advice whose only reason was another unsupported claim, and sarcasm.
 - *What I changed:* I rewrote the definitions: evidence is a checkable fact from any source or first-hand experience; `backed` needs a conclusion; one general claim makes a post not `vent`; an unsupported reason doesn't stop advice being `advice`. I also dropped "confident" from `hot_take`. Tone was the distinction I noticed most in Milestone 1, but the test showed it left hedged, unsupported claims with nowhere to go. I added an ordered decision rule, and I label sarcasm by its meaning. The AI drafted the new wording from the rules I agreed to.
 
-**Pre-labelling disclosure:**
+**Pre-labelling disclosure:** I used an AI tool to pre-label 183 of my 206 posts. I gave it my four definitions and my decision rules, and it gave each post a first label. Then I read every post myself and changed the labels I disagreed with. These rows say `pre-labelled` in the note column. I did not use AI for the 20 `cold` posts or the 3 `self-labelled` posts. I also used AI to split pasted Reddit threads into single comments and remove page text like "Upvote" and "Reply". When `hot_take` went over 40%, the AI removed 16 short `hot_take` posts after I asked it to.
+
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
