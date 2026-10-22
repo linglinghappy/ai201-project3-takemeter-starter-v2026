@@ -270,7 +270,7 @@ I predict my trained model will beat the baseline on `hot_take`, because it is m
 
 **What the gap actually means:**
 
-Both models guess only one label. The baseline labels every post `backed`, and my trained model labels every post `hot_take`. My model's accuracy is 0.194 higher, but only because `hot_take` is my most common label (12 of 31 test posts). Neither model can tell the four labels apart: `advice` and `vent` score 0 on both. So fine-tuning has not taught my model anything yet beyond "guess the biggest label.
+Both models guess only one label. The baseline labels every post `backed`, and my trained model labels every post `hot_take`. My model's accuracy is 0.194 higher, but only because `hot_take` is my most common label (12 of 31 test posts). Neither model can tell the four labels apart: `advice` and `vent` score 0 on both. So fine-tuning has not taught my model anything yet beyond "guess the biggest label."
 
 I also ran the baseline once with bare label names instead of my definitions. Bare names scored 0.452 accuracy / 0.416 macro F1, much higher than my definitions (0.194 / 0.081). So my definitions made the zero-shot baseline worse. I think this is because my `backed` definition is too broad ("a claim or a piece of advice"), so the model matched every post to it, and the other definitions depend on negations ("without evidence") that NLI models handle badly. My trained model (0.387) also loses to the bare-names baseline, so fine-tuning has not beaten a zero-shot model yet.
 
@@ -287,25 +287,33 @@ I also ran the baseline once with bare label names instead of my definitions. Ba
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 | ----------- | -------- | --------- | -------- | ----------- | --------- |
-| 1.        |        |         |        |           |         |
-| 2.        |        |         |        |           |         |
-| 3.        |        |         |        |           |         |
-| 4.        |        |         |        |           |         |
-| 5.        |        |         |        |           |         |
+| 1. Overall accuracy | ≥ 0.60 in all three seeds | 0.387 | 0.387 | 0.387 | MISSED |
+| 2. Per-label F1 | `hot_take`, `vent`, `advice` ≥ 0.50; `backed` ≥ 0.40 | hot_take 0.558, vent 0.000, advice 0.000, backed 0.000 | hot_take 0.558, vent 0.000, advice 0.000, backed 0.000 | hot_take 0.558, vent 0.000, advice 0.000, backed 0.000 | MISSED |
+| 3. Balance | every label ≥ 30 posts, none > 40% | smallest 36 (`advice`), largest 39.8% (`hot_take`) | same (dataset-level) | same (dataset-level) | MET |
+| 4. Consistency | ≥ 16 of 20 `cold` posts match on re-label | not measured yet | not measured yet | not measured yet | NOT MEASURED |
+| 5. Confidence | most-confident third minus least-confident third ≥ 0.15 | 0.40 − 0.30 = 0.10 | 0.70 − 0.10 = 0.60 | 0.60 − 0.30 = 0.30 | MISSED |
+
+Accuracy was 0.387 on all three seeds (spread 0.000), but that is not a sign of stability. On every seed the model predicted `hot_take` for every test post. The split is stratified, so every seed's test split has 12 `hot_take` posts out of 31, and always guessing `hot_take` scores 12 / 31 = 0.387 no matter which posts land in the test set. Training loss only fell from about 1.35 to 1.28 (random guessing over four labels is about 1.39), and with 144 training posts, batch size 16 and 3 epochs the model only took 27 training steps. The model is underfitting: it learned the most common label, not the difference between labels.
+
+Criterion 4 is not measured yet: I have not made `relabel_check.csv`. Criterion 5's numbers don't mean much here. Every prediction is `hot_take`, so each third's accuracy just counts how many real `hot_take` posts it happens to contain.
 
 ### Confusion matrix
 
 <!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
      An image of a matrix earns nothing. -->
 
+Seed 42. Seeds 7 and 2024 gave exactly the same matrix.
 
-| true \ predicted |  |  |  |
-| ------------------ | -- | -- | -- |
-| ****             |  |  |  |
-| ****             |  |  |  |
-| ****             |  |  |  |
+| true \ predicted | backed | hot_take | vent | advice |
+|---|---|---|---|---|
+| **backed** | 0 | 6 | 0 | 0 |
+| **hot_take** | 0 | 12 | 0 | 0 |
+| **vent** | 0 | 8 | 0 | 0 |
+| **advice** | 0 | 5 | 0 | 0 |
 
 **My biggest off-diagonal number, and what it means:**
+
+The biggest off-diagonal number is 8: all 8 real `vent` posts were called `hot_take`, and 0 real `hot_take` posts went the other way. But this isn't a single boundary the model got wrong. Every column except `hot_take` is 0, so the model calls every post `hot_take` and hasn't learned any boundary yet. That's why I read it as a model problem (too little training), not a labelling problem, even though the notebook says a lopsided direction usually points at labelling.
 
 <!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
      direction. "7 real analysis posts were called hot_take and only 3 went the
