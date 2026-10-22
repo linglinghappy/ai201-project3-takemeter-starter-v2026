@@ -44,7 +44,6 @@
 
 TakeMeter reads comments from r/csMajors, a Reddit community where CS students and new grads talk about jobs, internships and the job market. It sorts each comment into one of four labels. `backed` is a claim with real evidence. `hot_take` is a claim with no real evidence. `vent` is someone talking about their own situation and feelings. `advice` tells the reader what to do, with no evidence. The goal is to help a reader see which comments they can actually trust.
 
-
 ---
 
 ## Label Taxonomy
@@ -60,6 +59,7 @@ TakeMeter reads comments from r/csMajors, a Reddit community where CS students a
 **Definition:** A conclusion (a claim or a piece of advice) supported by evidence that directly explains why it's true, where evidence is either a specific, checkable fact from any source (a number, a rule, a study) or the writer's own first-hand experience.
 
 **Example 1:**
+
 > Do NOT ghost the loan management company. Call and tell them your situation, you’ll enter forbearance, WAY better than defaulting.
 >
 > If you’re in default, call anyways. Do not ghost the loan management company.
@@ -67,6 +67,7 @@ TakeMeter reads comments from r/csMajors, a Reddit community where CS students a
 > Default wrecks credit, garnishes future wages, and many other shit things. Forbearance protects against that. It literally only requires proving your situation and notifying them.
 
 **Example 2:**
+
 > Surprisingly it’s worth something. An F500 company hired me straight off of a no name internship since the stuff I did in it was very useful to what they had an opening for
 
 ### `hot_take`
@@ -74,6 +75,7 @@ TakeMeter reads comments from r/csMajors, a Reddit community where CS students a
 **Definition:** A conclusion about the world or the industry with no evidence offered, or with only a story too small to carry it, whether the tone is confident or hedged.
 
 **Example 1:**
+
 > The uncomfortable truth here is Big Tech and F500 companies are filled with unpleasant people that break all these rules OP listed because they simply get things done (whether they are actually good at their job is debatable, what matters is many of them put on a good show for leadership and play the corporate game well).
 >
 > And guess what, unpleasant people who are in the position of hiring often hire (or even select for) other unpleasant people.
@@ -81,6 +83,7 @@ TakeMeter reads comments from r/csMajors, a Reddit community where CS students a
 > This is all to say, many new grads/early career folks will pretty quickly learn being a normal person is unfortunately not selected for at a lot of tech companies and very few interviewers can even glean that info from a ~1hr interview.
 
 **Example 2:**
+
 > Hear me out. A friend who did math at an ivy league university got a job at the big3 consulting with no internship. It is crazy how much prestige open up the door. So for those losers who said “prestige does not matter” you should put yourself into current fresh grad’s shoes. It is the same for swe which is a prestige whore.
 
 ### `vent`
@@ -88,9 +91,11 @@ TakeMeter reads comments from r/csMajors, a Reddit community where CS students a
 **Definition:** The writer describes their own situation and how it feels, without drawing any conclusion about the world or telling anyone what to do, even if they include numbers.
 
 **Example 1:**
+
 > 150 apps a few oas 0 interviews it’s over for me
 
 **Example 2:**
+
 > lost track atp, i did multiple OAs and got into two interview processes for new grad (i got more interview processes for entry level positions than i did for new grad smh). flunked one of them and the other one i'm not very confident about my chances of passing. i have an offer on the table but not something that i'm content with so i'm still applying and hoping for the best :(
 
 ### `advice`
@@ -98,9 +103,11 @@ TakeMeter reads comments from r/csMajors, a Reddit community where CS students a
 **Definition:** Tells the reader what action to take (try, you should, do X, don't do Y) without evidence for it; a reason that is itself an unsupported claim doesn't count as evidence.
 
 **Example 1:**
+
 > I think the bigger issue is getting past the initial screening. Try referrals and smaller companies too. Your first opportunity doesn’t have to come from a big name company.
 
 **Example 2:**
+
 > You can't control what you did but only what you can do now and in the future. Just focus on making yourself the best candidate with what you can control instead of focusing on what you can't.
 
 ### The hardest boundary
@@ -108,6 +115,7 @@ TakeMeter reads comments from r/csMajors, a Reddit community where CS students a
 **Which two labels:** `backed` and `hot_take`
 
 **The decision rule I used every time:**
+
 <!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
      if the tone is heated." -->
 
@@ -124,7 +132,6 @@ Evidence doesn't have to be personal: a specific, checkable fact from any source
 
 Sarcasm is labelled by what it actually means, not its literal words. When a post mixes types (a claim plus some advice), I label it by what most of its words are doing.
 
-
 ---
 
 ## The Dataset
@@ -134,8 +141,8 @@ Sarcasm is labelled by what it actually means, not its literal words. When a pos
 
 **Where the posts came from:** Public comments from r/csMajors. I copied and pasted them by hand, and I kept each comment whole. The threads cover return offers, interview updates, the new-grad job market, backup majors, AI and coding jobs, and why CS grads like living in NYC. I did not use a scraper.
 
-**How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
-Say so plainly — the disclosure is required, not penalised. -->
+**How I labelled them:** 
+
 - **20 cold.** I labelled 20 posts first, with only my definitions and no tools. They are marked `cold` in the note column.
 - **3 by myself.** I labelled 3 more posts on my own. They are marked `self-labelled`.
 - **183 pre-labelled.** An AI tool gave a first label to the other 183 posts, using my four definitions and my decision rules. I read every one and fixed the labels I disagreed with. They are marked `pre-labelled`.
@@ -143,13 +150,14 @@ Say so plainly — the disclosure is required, not penalised. -->
 
 **Counts per label:**
 
-| Label | Count | Share |
-|---|---|---|
-| `hot_take` | 82 | 39.8% |
-| `vent` | 51 | 24.8% |
-| `backed` | 37 | 18.0% |
-| `advice` | 36 | 17.5% |
-| **Total** | 206 | 100% |
+
+| Label      | Count | Share |
+| ------------ | ------- | ------- |
+| `hot_take` | 82    | 39.8% |
+| `vent`     | 51    | 24.8% |
+| `backed`   | 37    | 18.0% |
+| `advice`   | 36    | 17.5% |
+| **Total**  | 206   | 100%  |
 
 **Three hard cases**
 
@@ -157,6 +165,7 @@ Say so plainly — the disclosure is required, not penalised. -->
      been, and what you chose. These are worth more than the easy 190. -->
 
 **1.**
+
 > *The post:* "Yeah that sucks. Annoying in this industry that one interviewer can have personal bias or some other issue going on and tank an entire interview process and job opportunity. Had it happen several times."
 >
 > *Could have been:* `vent` or `backed`
@@ -164,6 +173,7 @@ Say so plainly — the disclosure is required, not penalised. -->
 > *I chose, because:* In my cold pass I chose `vent`, because the tone is frustrated and it opens with "that sucks". On review it should be `backed`. It makes a general claim about the industry (one interviewer can tank a whole process), so by rule 2 it can't be `vent`. And "had it happen several times" is the writer's own first-hand experience, and it directly explains that claim. I left the cold label unchanged in `labels.csv` so the agreement check measures my real first pass.
 
 **2.**
+
 > *The post:* "renaissance? CS was over-saturated previously due to the hiring spree during scaling phase of big tech. it is just getting back to baseline."
 >
 > *Could have been:* `vent` or `hot_take`
@@ -171,6 +181,7 @@ Say so plainly — the disclosure is required, not penalised. -->
 > *I chose, because:* In my cold pass I chose `vent`, because it sounded tired and negative. On review it should be `hot_take`. There is nothing about the writer in it, just a conclusion about the whole industry with no evidence given. This one taught me that tone doesn't decide the label: a gloomy post is only `vent` if it is about the writer's own situation.
 
 **3.**
+
 > *The post:* "Yeah, I could see this. It's just our economy has been a fucking mess for four years now. for there to be a renaissance, The economy has to improve and I'm afraid that it's gonna be a while before that happens.."
 >
 > *Could have been:* `vent` or `hot_take`
@@ -185,26 +196,23 @@ Say so plainly — the disclosure is required, not penalised. -->
 
 **Base model:** `distilbert-base-uncased`
 
-**Settings:** <!-- epochs, learning rate, batch size, seed --> 3 epochs, learning rate 2e-5, batch size 16, max length 128 tokens, seed 42. I trained on an Apple Silicon GPU (MPS), with torch 2.14.1.
+**Settings:**  3 epochs, learning rate 2e-5, batch size 16, max length 128 tokens, seed 42. I trained on an Apple Silicon GPU (MPS), with torch 2.14.1.
 
 **Anything I changed from the defaults, and why:** Nothing. I kept every default. This is my first run, so I want a clean starting point to compare against next unit.
 
-**Split sizes:** <!-- train / val / test, and per-label counts in the test
-split. If a label had fewer than about 8 in test, say so — it explains a lot
-of next unit's variance. -->
+**Split sizes:** 
 
 Train 144 · Val 31 · Test 31
 
-| Label | Train | Val | Test |
-|---|---|---|---|
-| `hot_take` | 58 | 12 | 12 |
-| `vent` | 35 | 8 | 8 |
-| `backed` | 26 | 5 | 6 |
-| `advice` | 25 | 6 | 5 |
+
+| Label      | Train | Val | Test |
+| ------------ | ------- | ----- | ------ |
+| `hot_take` | 58    | 12  | 12   |
+| `vent`     | 35    | 8   | 8    |
+| `backed`   | 26    | 5   | 6    |
+| `advice`   | 25    | 6   | 5    |
 
 `backed` has only 6 posts in the test split, and `advice` has only 5. Both are under 8. One right or wrong answer moves their F1 a lot, so I expect their scores to jump between seeds next unit. `vent` has exactly 8, so it is on the edge.
-
-
 
 ---
 
@@ -221,7 +229,7 @@ Train 144 · Val 31 · Test 31
 
 - *What I asked for:* While designing my labels, I proposed adding a fourth label, `advice`, to the three-label plan (`backed` / `hot_take` / `vent`), because unsupported advice was one of the most common things I saw on r/csMajors. I asked the AI to evaluate that choice, and then checked my own understanding of it: I said `advice` responds to the OP's personal case with an action, and `hot_take` is an opinion that doesn't share a story as evidence.
 - *What came back:* It agreed `advice` matches how the community talks, but pointed out a conflict: a post like the student-loan comment is advice *and* backed by facts. It suggested checking for support first (supported → `backed`, even if it's advice). It also flagged two problems with my definitions: the model only sees one comment, so "responds to the OP" can't be a feature, and a story isn't automatically evidence (the "my friend got into consulting" post shares a story but is still a `hot_take`).
-- *What I changed:* I kept four labels and adopted the support-first rule. I removed "responds to the OP" from `advice` and defined it by the text alone: it tells the reader what action to take, with no reason given. I rewrote `hot_take` to cover a story too small to carry the conclusion. 
+- *What I changed:* I kept four labels and adopted the support-first rule. I removed "responds to the OP" from `advice` and defined it by the text alone: it tells the reader what action to take, with no reason given. I rewrote `hot_take` to cover a story too small to carry the conclusion.
 
 **Moment 2**
 
@@ -230,7 +238,6 @@ Train 144 · Val 31 · Test 31
 - *What I changed:* I rewrote the definitions: evidence is a checkable fact from any source or first-hand experience; `backed` needs a conclusion; one general claim makes a post not `vent`; an unsupported reason doesn't stop advice being `advice`. I also dropped "confident" from `hot_take`. Tone was the distinction I noticed most in Milestone 1, but the test showed it left hedged, unsupported claims with nowhere to go. I added an ordered decision rule, and I label sarcasm by its meaning. The AI drafted the new wording from the rules I agreed to.
 
 **Pre-labelling disclosure:** I used an AI tool to pre-label 183 of my 206 posts. I gave it my four definitions and my decision rules, and it gave each post a first label. Then I read every post myself and changed the labels I disagreed with. These rows say `pre-labelled` in the note column. I did not use AI for the 20 `cold` posts or the 3 `self-labelled` posts. I also used AI to split pasted Reddit threads into single comments and remove page text like "Upvote" and "Reply". When `hot_take` went over 40%, the AI removed 16 short `hot_take` posts after I asked it to.
-
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
@@ -244,22 +251,31 @@ Train 144 · Val 31 · Test 31
 <!-- Both models on the same posts. `python baseline.py --trained results.json`
      prints this table for you. -->
 
-| Measure | Baseline | Trained | Difference |
-|---|---|---|---|
-| Overall accuracy |  |  |  |
-| Macro F1 |  |  |  |
-| F1 — `label_one` |  |  |  |
-| F1 — `label_two` |  |  |  |
+
+| Measure          | Baseline | Trained | Difference |
+| ------------------ | ---------- | --------- | ------------ |
+| Overall accuracy | 0.194    | 0.387   | +0.194     |
+| Macro F1         | 0.081    | 0.140   | +0.058     |
+| F1 — `advice`   | 0.000    | 0.000   | +0.000     |
+| F1 — `backed`   | 0.324    | 0.000   | -0.324     |
+| F1 — `hot_take` | 0.000    | 0.558   | +0.558     |
+| F1 — `vent`     | 0.000    | 0.000   | +0.000     |
 
 **What I predicted before I looked:**
+
+I predict my trained model will beat the baseline on `hot_take`, because it is my biggest label and the model saw 58 examples of it, but the baseline will do better on `advice`, because "you should…" is easy to spot from the definition alone.
+
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
      prediction made afterwards isn't one. -->
 
 **What the gap actually means:**
+
+Both models guess only one label. The baseline labels every post `backed`, and my trained model labels every post `hot_take`. My model's accuracy is 0.194 higher, but only because `hot_take` is my most common label (12 of 31 test posts). Neither model can tell the four labels apart: `advice` and `vent` score 0 on both. So fine-tuning has not taught my model anything yet beyond "guess the biggest label.
+
+I also ran the baseline once with bare label names instead of my definitions. Bare names scored 0.452 accuracy / 0.416 macro F1, much higher than my definitions (0.194 / 0.081). So my definitions made the zero-shot baseline worse. I think this is because my `backed` definition is too broad ("a claim or a piece of advice"), so the model matched every post to it, and the other definitions depend on negations ("without evidence") that NLI models handle badly. My trained model (0.387) also loses to the bare-names baseline, so fine-tuning has not beaten a zero-shot model yet.
+
 <!-- If the baseline matched your trained model, your fine-tuning added
      nothing — and that is a real finding, not a failure. Say it plainly. -->
-
-
 
 ---
 
@@ -268,31 +284,32 @@ Train 144 · Val 31 · Test 31
 <!-- Five criteria across three seeds. The notebook's section 6 prints the
      spread table; the Target and Verdict columns are yours. -->
 
+
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
-|---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| ----------- | -------- | --------- | -------- | ----------- | --------- |
+| 1.        |        |         |        |           |         |
+| 2.        |        |         |        |           |         |
+| 3.        |        |         |        |           |         |
+| 4.        |        |         |        |           |         |
+| 5.        |        |         |        |           |         |
 
 ### Confusion matrix
 
 <!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
      An image of a matrix earns nothing. -->
 
+
 | true \ predicted |  |  |  |
-|---|---|---|---|
-| **** |  |  |  |
-| **** |  |  |  |
-| **** |  |  |  |
+| ------------------ | -- | -- | -- |
+| ****             |  |  |  |
+| ****             |  |  |  |
+| ****             |  |  |  |
 
 **My biggest off-diagonal number, and what it means:**
+
 <!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
      direction. "7 real analysis posts were called hot_take and only 3 went the
      other way" is a direction, not just an error rate. -->
-
-
 
 ---
 
@@ -301,13 +318,14 @@ Train 144 · Val 31 · Test 31
 <!-- MET or MISSED against LAST UNIT's target. The target has to hold across
      all three seeds, not turn up sometimes. -->
 
+
 | # | Criterion | Target | Verdict | How I decided |
-|---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
+| --- | ----------- | -------- | --------- | --------------- |
+| 1 |           |        |         |               |
+| 2 |           |        |         |               |
+| 3 |           |        |         |               |
+| 4 |           |        |         |               |
+| 5 |           |        |         |               |
 
 **Diagnoses**
 
@@ -319,8 +337,6 @@ Train 144 · Val 31 · Test 31
      ⚠️ Use your agreement report as evidence. It is the only instrument you
      have that can tell a LABELLING problem from a MODEL problem, and this
      section is graded on whether you used it that way. -->
-
-
 
 ---
 
@@ -355,6 +371,7 @@ Train 144 · Val 31 · Test 31
      what you did across your own 200. -->
 
 **1.**
+
 > *The post:*
 >
 > *Staff said / I said:*
@@ -364,6 +381,7 @@ Train 144 · Val 31 · Test 31
 > *Which pile:*
 
 **2.**
+
 > *The post:*
 >
 > *Staff said / I said:*
@@ -373,8 +391,6 @@ Train 144 · Val 31 · Test 31
 > *Which pile:*
 
 **What the pattern in my disagreements tells me:**
-
-
 
 ---
 
@@ -386,20 +402,19 @@ Train 144 · Val 31 · Test 31
 
 ### Run Log — After
 
+
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
-|---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| ----------- | -------- | --------- | -------- | ----------- | --------- |
+| 1.        |        |         |        |           |         |
+| 2.        |        |         |        |           |         |
+| 3.        |        |         |        |           |         |
+| 4.        |        |         |        |           |         |
+| 5.        |        |         |        |           |         |
 
 **Did it help, and how do I know:**
 
 <!-- If it didn't, say so. Relabelling that didn't help is a genuinely
      interesting result and earns full credit. -->
-
-
 
 ---
 
@@ -407,13 +422,10 @@ Train 144 · Val 31 · Test 31
 
 <!-- For each criterion still missed: what you'd do, and why you stopped. -->
 
-
-
 **The gap between what I meant my labels to capture and what the model
 learned:**
+
 <!-- Two sentences. Your confusion matrix is the evidence. -->
-
-
 
 <!-- ═════════════════════════════════════════════════════════════════════
 

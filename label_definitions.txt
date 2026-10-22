@@ -5,6 +5,8 @@
 #
 # Delete the examples below and put yours in.
 
-analysis: makes an argument backed by a specific, checkable fact
-hot_take: a confident claim with no support offered
-reaction: an immediate response to something that just happened
+backed: A conclusion (a claim or a piece of advice) supported by evidence that directly explains why it's true, where evidence is either a specific, checkable fact from any source (a number, a rule, a study) or the writer's own first-hand experience.
+hot_take: A conclusion about the world or the industry with no evidence offered, or with only a story too small to carry it, whether the tone is confident or hedged.
+vent: The writer describes their own situation and how it feels, without drawing any conclusion about the world or telling anyone what to do, even if they include numbers.
+advice: Tells the reader what action to take (try, you should, do X, don't do Y) without evidence for it; a reason that is itself an unsupported claim doesn't count as evidence.
+

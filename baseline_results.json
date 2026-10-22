@@ -1,0 +1,195 @@
+{
+  "model": "facebook/bart-large-mnli",
+  "n": 31,
+  "seed": 42,
+  "held_out": true,
+  "used_definitions": true,
+  "scores": {
+    "n": 31,
+    "accuracy": 0.1935483870967742,
+    "f1_macro": 0.08108108108108107,
+    "per_label": {
+      "advice": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 5
+      },
+      "backed": {
+        "precision": 0.1935483870967742,
+        "recall": 1.0,
+        "f1": 0.3243243243243243,
+        "support": 6
+      },
+      "hot_take": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 12
+      },
+      "vent": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 8
+      }
+    }
+  },
+  "predictions": [
+    {
+      "text": "They prioritize their time to pursue projects and maximize their resume\u2019s value at the expense of other project members. Most of the time if you want to find good consistent team members it\u2019s usually at the front who are the most attentive.",
+      "gold": "hot_take",
+      "predicted": "backed"
+    },
+    {
+      "text": "Stripe OA was hardest in terms of leetcode problem. Roblox and Epic Systems were both long but not really that difficult just tedious",
+      "gold": "vent",
+      "predicted": "backed"
+    },
+    {
+      "text": "If some genuine guy is a judge the they could easily identify AI slop by just asking questions as more and more people avoiding reading code.",
+      "gold": "hot_take",
+      "predicted": "backed"
+    },
+    {
+      "text": "The thing is CS is a extremely fast moving industry\r\nOnly the people who constantly skill up will survive\r\nConsidering sectors like manufacturing and healthcare they offer stability as they aren\u2019t as fast growing or changing as CS",
+      "gold": "hot_take",
+      "predicted": "backed"
+    },
+    {
+      "text": "Check out usajobs.gov and switch to a government role, especially for roles open to the public",
+      "gold": "advice",
+      "predicted": "backed"
+    },
+    {
+      "text": "Graduated with a 3.1 from an Ivy, I literally have recruiters in my inbox constantly 1 year later, and I\u2019m at a solid company (ex YC) 175tc remote in a MCOL.\r\n\r\nIt\u2019s not cooked at all. Just be building things, and most importantly network and be a good human to talk to.",
+      "gold": "backed",
+      "predicted": "backed"
+    },
+    {
+      "text": "Whenever this happens, I always think of two possible scenarios: either I wasn't prepared enough, meaning there's some topic I haven't fully mastered or understood yet, or it was just bad luck. And bad luck also includes the competition, like people who are way more prepared or just a better fit for the role. But hey, that's life I guess. Someday, if you really set your mind to it, you'll be the right person for that job.",
+      "gold": "vent",
+      "predicted": "backed"
+    },
+    {
+      "text": "but..I just cant bring myself to not prep dsa, what if the interviewer does just randomly ask a LC medium before getting into the ai assisted task.\r\n\r\ntho the recruiter's email clearly mentioned 'Use of AI for generation, review suggestion of code is permitted\"",
+      "gold": "vent",
+      "predicted": "backed"
+    },
+    {
+      "text": "programming can be developed on your own. the CS major is not necessarily important for becoming a good programmer.\r\n\r\nbut given your job interests in low-latency systems, I think you should finish your degree in a technical major. philosophy isn't gonna do you any favors for interviewing. maybe switch to EE or Applied Math or soemthing.",
+      "gold": "advice",
+      "predicted": "backed"
+    },
+    {
+      "text": "I was a TA for a core class at an Ivy. Some of the students would get the stinkest grades and land big tech offers. It genuinely doesn't matter except you lose some options due to GPA requirements.",
+      "gold": "backed",
+      "predicted": "backed"
+    },
+    {
+      "text": "Like CS = worth it.\r\n\r\nDont like CS = not worth it.\r\n\r\nJust know that CS isnt the goldmine it used to be. Future of CS isnt looking too bright either",
+      "gold": "hot_take",
+      "predicted": "backed"
+    },
+    {
+      "text": "hugely positive sign , they are seeing if you are an office match or a fun person they want on the team , you most likely passed all the technical stuff in their mind.",
+      "gold": "hot_take",
+      "predicted": "backed"
+    },
+    {
+      "text": "Honestly I think there will be some kind of equilibrium eventually.\r\n\r\nThere will still need to be a handful of folks who are there for \u201cbreak glass\u201d scenarios so I imagine some form of human pipeline for that still being in place.\r\n\r\nAlso in terms of \u201ccheaper\u201d, that might take a bit. On my side, our costs are actually going up YoY. There will likely be a point where we really assess our budget / token usage soon and really refine the scope of how much we actually want to spend. I imagine eventual breakthroughs will cause cost to go down but honestly that is not what I am seeing right now.",
+      "gold": "backed",
+      "predicted": "backed"
+    },
+    {
+      "text": "There are still a lot of jobs in CS but junior roles are very competitive. There are so many ways you can go with tech, though. My advice for everyone right now is if you're just looking for the pay check, forget it. It's not the field of endless jobs anymore. But if you're passionate about it and it's the thing you really want to do, then put your head down and commit. Find a way.",
+      "gold": "advice",
+      "predicted": "backed"
+    },
+    {
+      "text": "not anymore. work in IT if you want stability but don't expect the cash to flow the same.",
+      "gold": "advice",
+      "predicted": "backed"
+    },
+    {
+      "text": "AI slop ended like 6 months ago tho. Far better than human slop.",
+      "gold": "hot_take",
+      "predicted": "backed"
+    },
+    {
+      "text": "We never hired the coding geniuses who were socially awkward. Don\u2019t mean to sound like a dick, but they are never a productive team member. Software development requires collaboration. Ofc we put our heads down and focus on work as well, but if you lack the people skills that are relevant in any job, you won\u2019t succeed.\r\n\r\nI always tell people, in these interviews. The person is not just thinking about if you know your shit, they are also imagining if they can see themselves working with you. So yeah, if you get along with people that\u2019s a huge advantage.",
+      "gold": "backed",
+      "predicted": "backed"
+    },
+    {
+      "text": "If you're single its great. If you love nature, you'll hate NYC.\n\nIf you're raising a family, I'd choose another city though.\n\nSource: Lived in about 13 states, visited NYC multiple times. Great place to be single, I'd legitimately hate raising kids there imo.",
+      "gold": "hot_take",
+      "predicted": "backed"
+    },
+    {
+      "text": "Don't have a full time job yet, but I do a lot of contracts for AI companies. I never know who the client is until I've accepted the offer.\r\n\r\nI always pray it's not Meta. They tend to be highly disorganized, non-communicative, and have unreasonable expectations that will randomly change mid-contract, if not mid-task.\r\n\r\nMy partner reports similar experiences with the company. Fuck Meta.",
+      "gold": "backed",
+      "predicted": "backed"
+    },
+    {
+      "text": "I've been working as SWE for years now, and trust me, 95% of companies don't give a rats ass about how pretty, structured, clever your code is. Fundimentals are useful but only to a degree.",
+      "gold": "backed",
+      "predicted": "backed"
+    },
+    {
+      "text": "As always, it's depend on the person. If you're just going with the motion like everyone else, then no. But if you're networking like crazy, and know what to specialize in using your CS degree, then yes.",
+      "gold": "hot_take",
+      "predicted": "backed"
+    },
+    {
+      "text": "CS is doing better than ever. The issue is using CS knowledge as a trade tool. The more mundane programming jobs will be eaten away progressively, and those at the tip of the pyramid will be the ones that stay. At least that's my prediction.\r\n\r\nIn the long term, who knows what could happen. We are literally living science fiction.",
+      "gold": "hot_take",
+      "predicted": "backed"
+    },
+    {
+      "text": "Idfk I couldn\u2019t get any interviews in NY when I lived in NJ",
+      "gold": "vent",
+      "predicted": "backed"
+    },
+    {
+      "text": "Depends why are you doing cs? If I could go back I\u2019d still do it bcs I\u2019m very passionate about it and don\u2019t think I\u2019d like something else, but the job market sucks massively rn ngl. Like sometimes I wish I genuinely liked something else like ee or something in health",
+      "gold": "vent",
+      "predicted": "backed"
+    },
+    {
+      "text": "Yeah, I could see this. It\u2019s just our economy has been a fucking mess for four years now. for there to be a renaissance, The economy has to improve and I\u2019m afraid that it\u2019s gonna be a while before that happens..",
+      "gold": "vent",
+      "predicted": "backed"
+    },
+    {
+      "text": "The issue is that tons of mid-level colleges produced lots of CS students in the past 10 years. However many of them learned just the syntax of coding. If they said about AI is true, those jobs are gone. Either you are in IT supporting kind guys, or really good one knowing software engineers inside out.",
+      "gold": "hot_take",
+      "predicted": "backed"
+    },
+    {
+      "text": "I agree with this. But what we are seeing isn't effort being saved on programming to allow for more effort on the ideas and designs. Instead, we see the same level of effort for the ideas, resulting in less effort overall.\r\n\r\nAnd I attribute this largely to the corporatization of the discipline. Hackathons used to be for those who are passionate about the subject, but now it's just chock full of \"bros\" trying to check boxes for their resume. It's no longer an event to celebrate talent and now just a career stepping stone. In that sense, it's less of a competition and more of a career fair.",
+      "gold": "hot_take",
+      "predicted": "backed"
+    },
+    {
+      "text": "GHC should refund money for all flight tickets, hotel bookings...etc",
+      "gold": "hot_take",
+      "predicted": "backed"
+    },
+    {
+      "text": "Shopify was pretty bad too they asked me to code in rust\ud83d\ude2d\ud83d\ude2d\ud83d\ude2d",
+      "gold": "vent",
+      "predicted": "backed"
+    },
+    {
+      "text": "no one is gonna ask about your grades. leave it off your resume.\r\n\r\nkeep doing what you\u2019re doing and you\u2019ll be fine.\r\n\r\na candidate with actual projects and referrals but a weak gpa >> a candidate with school/typical projects and no referrals but high gpa",
+      "gold": "advice",
+      "predicted": "backed"
+    },
+    {
+      "text": "That sucks :( but with Google on your resume, even though the market for average student is not great, you shouldn\u2019t have problems getting interviews at faang+ companies with similar or higher comp \ud83d\udc4d you got it!",
+      "gold": "vent",
+      "predicted": "backed"
+    }
+  ]
+}
