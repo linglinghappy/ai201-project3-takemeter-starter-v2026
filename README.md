@@ -293,6 +293,8 @@ I also ran the baseline once with bare label names instead of my definitions. Ba
 | 4. Consistency | ≥ 16 of 20 `cold` posts match on re-label | not measured yet | not measured yet | not measured yet | NOT MEASURED |
 | 5. Confidence | most-confident third minus least-confident third ≥ 0.15 | 0.40 − 0.30 = 0.10 | 0.70 − 0.10 = 0.60 | 0.60 − 0.30 = 0.30 | MISSED |
 
+All three seeds ran on an Apple Silicon GPU (MPS) with torch 2.14.1.
+
 Accuracy was 0.387 on all three seeds (spread 0.000), but that is not a sign of stability. On every seed the model predicted `hot_take` for every test post. The split is stratified, so every seed's test split has 12 `hot_take` posts out of 31, and always guessing `hot_take` scores 12 / 31 = 0.387 no matter which posts land in the test set. Training loss only fell from about 1.35 to 1.28 (random guessing over four labels is about 1.39), and with 144 training posts, batch size 16 and 3 epochs the model only took 27 training steps. The model is underfitting: it learned the most common label, not the difference between labels.
 
 Criterion 4 is not measured yet: I have not made `relabel_check.csv`. Criterion 5's numbers don't mean much here. Every prediction is `hot_take`, so each third's accuracy just counts how many real `hot_take` posts it happens to contain.
