@@ -572,22 +572,48 @@ The gap is 0.10 on seed 42, below the 0.15 target. But the model predicts `hot_t
 
 ## The Improvement
 
-**What I changed:**
+**What I changed:** One training setting: `EPOCHS` from 3 to 10. Everything else stayed the same: learning rate 2e-5, batch size 16, max length 128, the same seeds (42, 7, 2024), and the same `labels.csv`. With 144 training posts and batch size 16, this takes training from 27 steps to 90.
 
-**Which diagnosis pointed at it:**
+**Which diagnosis pointed at it:** Criteria 1, 2 and 5. The before-run predicted `hot_take` for every test post on all three seeds, training loss barely moved (about 1.35 → 1.28, random guessing is about 1.39), and validation accuracy stayed at 0.387 after every epoch. That is undertraining, not labelling: the model wasn't even confusing specific label pairs yet, it just guessed the biggest label. I did not relabel the `vent` / `hot_take` boundary (criterion 4) in this run, because a model that only guesses one label can't show whether relabelling helped.
 
 ### Run Log — After
 
-
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 | ----------- | -------- | --------- | -------- | ----------- | --------- |
-| 1.        |        |         |        |           |         |
-| 2.        |        |         |        |           |         |
-| 3.        |        |         |        |           |         |
-| 4.        |        |         |        |           |         |
-| 5.        |        |         |        |           |         |
+| 1. Overall accuracy | ≥ 0.60 in all three seeds | 0.613 | 0.613 | 0.742 | MET |
+| 2. Per-label F1 | `hot_take`, `vent`, `advice` ≥ 0.50; `backed` ≥ 0.40 | hot_take 0.621, vent **0.462**, advice 0.727, backed 0.667 | hot_take 0.741, vent 0.636, advice **0.333**, backed **0.286** | hot_take 0.774, vent 0.800, advice 0.750, backed 0.500 | MISSED |
+| 3. Balance | every label ≥ 30 posts, none > 40% | smallest 36 (`advice`), largest 39.8% (`hot_take`) | same (dataset-level) | same (dataset-level) | MET |
+| 4. Consistency | ≥ 16 of 20 `cold` posts match on re-label | 10 / 20 | same (dataset-level) | same (dataset-level) | MISSED |
+| 5. Confidence | most-confident third minus least-confident third ≥ 0.15 | 0.70 − 0.50 = 0.20 | 1.00 − 0.30 = 0.70 | 1.00 − 0.60 = 0.40 | MET |
+
+All three seeds ran on an Apple Silicon GPU (MPS) with torch 2.14.1. Bold numbers are the ones below target.
+
+**Confusion matrix — after (seed 42):**
+
+| true \ predicted | backed | hot_take | vent | advice |
+|---|---|---|---|---|
+| **backed** | 3 | 3 | 0 | 0 |
+| **hot_take** | 0 | 9 | 2 | 1 |
+| **vent** | 0 | 4 | 3 | 1 |
+| **advice** | 0 | 1 | 0 | 4 |
 
 **Did it help, and how do I know:**
+
+Yes, a lot. Side by side:
+
+| Measure | Before (3 epochs) | After (10 epochs) |
+|---|---|---|
+| Overall accuracy (seeds 42 / 7 / 2024) | 0.387 / 0.387 / 0.387 | 0.613 / 0.613 / 0.742 |
+| Macro F1 (seeds 42 / 7 / 2024) | 0.140 / 0.140 / 0.140 | 0.619 / 0.499 / 0.706 |
+| Criteria met | 1 of 5 (balance) | 3 of 5 (accuracy, balance, confidence) |
+
+Before, the model guessed `hot_take` for every post. Now every label has correct predictions on the diagonal of the matrix, and accuracy beats both the always-`hot_take` score (0.387) and the bare-names zero-shot baseline (0.452) on every seed. Criterion 1 went from MISSED to MET, but only just: two seeds are at 0.613 against a 0.60 target. Criterion 5 went from MISSED to MET, and now it means something, because the model is no longer predicting one label.
+
+Three things are still not good:
+
+- **The result is not stable.** Accuracy moved 0.129 across seeds, more than 10 points, and per-label F1 moved even more (`advice` from 0.333 to 0.750, `backed` from 0.286 to 0.667). The test split has only 31 posts, with 6 `backed` and 5 `advice`, so one post changes those F1 scores by a lot. My dataset is too small for a stable measure.
+- **Criterion 2 is still MISSED.** Every label passes on at least one seed but not on all three: `vent` fails on seed 42, and `advice` and `backed` fail on seed 7.
+- **The `vent` / `hot_take` boundary now shows up.** The biggest off-diagonal is 4 real `vent` posts called `hot_take`, with 2 going the other way. Now that the model is actually learning, the confusion is on exactly the pair where my own labels were inconsistent: 7 of my 10 re-label changes (criterion 4) were between `vent` and `hot_take`. So my next change would be to relabel that boundary, not more training.
 
 <!-- If it didn't, say so. Relabelling that didn't help is a genuinely
      interesting result and earns full credit. -->
