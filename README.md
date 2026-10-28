@@ -358,7 +358,7 @@ The biggest off-diagonal number is 8: all 8 real `vent` posts were called `hot_t
      data/staff_taxonomy.md, not your own — so every argument below is made
      from those definitions and those decision rules. -->
 
-**Agreement rate:** ___ / 30 = ___%
+**Agreement rate:** 13 / 30 = 43%
 
 <!-- Nobody grades this number. A 60% who argues every disagreement from the
      stated rules beats a 95% who wrote "staff was right" nine times. Several
@@ -382,25 +382,177 @@ The biggest off-diagonal number is 8: all 8 real `vent` posts were called `hot_t
 
 **1.**
 
-> *The post:*
+> *The post:* "I tracked sleep against session quality for eleven weeks. Under seven hours the next day's intervals were 6-8 seconds per mile slower, every time bar one. Small sample, one runner, but it's consistent enough that I've stopped scheduling hard days after late shifts."
 >
-> *Staff said / I said:*
+> *Staff said / I said:* `analysis` / `hot_take`
 >
-> *My call, and why:*
+> *My call, and why:* I think my reading is defensible. The definition asks for a "checkable" fact. This is a private sleep log, and no reader can check it. Staff read "checkable" as "specific and measured". I read it as "someone else could verify it". The rules don't say which one is meant, and every example fact in the taxonomy (a stat, a date, a quote) is public.
 >
-> *Which pile:*
+> *Which pile:* (c)
 
 **2.**
 
-> *The post:*
+> *The post:* "Everyone blames the hill at 18 miles. I split the field into people who ran the first half under 1:45 and over, and the slowdown after 18 was almost identical for both groups. If the hill were the problem the fast starters would fall apart harder."
 >
-> *Staff said / I said:*
+> *Staff said / I said:* `analysis` / `hot_take`
 >
-> *My call, and why:*
+> *My call, and why:* Staff is right. The writer runs a test on the race results, and the result is the reason for the conclusion. Rule 1 says that is `analysis`. I think I used my own unit 5 idea that a small story can't carry a claim, which is not in the staff rules.
 >
-> *Which pile:*
+> *Which pile:* (a)
+
+**3.**
+
+> *The post:* "Went back through the club results going back to 2012. Every single year the number of people who enter the spring marathon and don't start it sits between 18 and 23 percent. It's not a bad-luck year, it's the base rate."
+>
+> *Staff said / I said:* `analysis` / `hot_take`
+>
+> *My call, and why:* Staff is right. Club results are public and checkable, and the 18–23% range is the whole argument. Rule 1 covers this. I applied it loosely.
+>
+> *Which pile:* (a)
+
+**4.**
+
+> *The post:* "Three of us ran the same session on the same day, different shoes, within 10 seconds of each other over 5 miles. I'm not saying shoes do nothing, but whatever they do was smaller than the noise between three people."
+>
+> *Staff said / I said:* `analysis` / `hot_take`
+>
+> *My call, and why:* The rules don't cover this case. The claim is hedged ("I'm not saying shoes do nothing") and the sample is only three people. `hot_take` needs a "confident" claim, and this one is not confident. `analysis` needs a fact that carries the argument, and three runners is very weak. Neither label fits well, and the rules don't say what to do with a careful claim that has weak evidence. Staff also marked this one as hard.
+>
+> *Which pile:* (b)
+
+**5.**
+
+> *The post:* "Anyone who races more than once a month isn't training, they're just collecting medals."
+>
+> *Staff said / I said:* `hot_take` / `analysis`
+>
+> *My call, and why:* Staff is right. This is a claim about a whole group with no support. "Once a month" is part of the claim, not evidence for it. Rule 1 covers this.
+>
+> *Which pile:* (a)
+
+**6.**
+
+> *The post:* "The club needs to stop pretending the Tuesday session is for everyone. It isn't and it never has been."
+>
+> *Staff said / I said:* `hot_take` / `reaction`
+>
+> *My call, and why:* Staff's label is closer, because this is a general claim about the club and not about the writer, so it isn't `reaction` (Rule 2). But the post mostly tells the club what to do ("needs to stop"). The three labels don't say how to handle advice or a call to action. That gap is why I added an `advice` label in my own project.
+>
+> *Which pile:* (b)
+
+**7.**
+
+> *The post:* "Times are down about 3% since the shoe rules changed, so obviously the shoes are the whole story and the sport has a problem."
+>
+> *Staff said / I said:* `hot_take` / `analysis`
+>
+> *My call, and why:* Staff is right. This is almost exactly the Rule 1 example. The 3% is decoration, and "so obviously" does the work, not the number. I treated "has a number" as "has evidence".
+>
+> *Which pile:* (a)
+
+**8.**
+
+> *The post:* "If you need a gel before 90 minutes you have a fuelling problem, not an energy problem."
+>
+> *Staff said / I said:* `hot_take` / `analysis`
+>
+> *My call, and why:* Staff is right. "90 minutes" is part of the claim, not a fact that supports it. Nothing is argued. Rule 1 covers this.
+>
+> *Which pile:* (a)
+
+**9.**
+
+> *The post:* "Road racing peaked in about 2015 and everything since has been marketing."
+>
+> *Staff said / I said:* `hot_take` / `reaction`
+>
+> *My call, and why:* Staff is right. This is a general claim about the whole sport, not about the writer, so Rule 2 makes it `hot_take`. The year is part of the claim, not evidence for it.
+>
+> *Which pile:* (a)
+
+**10.**
+
+> *The post:* "Track sessions are wasted on anyone running slower than 8 minute miles. You'd get more out of just running more."
+>
+> *Staff said / I said:* `hot_take` / `analysis`
+>
+> *My call, and why:* Staff is right. "8 minute miles" is a cut-off inside the claim, not evidence. There are two claims and no support. Rule 1 covers this.
+>
+> *Which pile:* (a)
+
+**11.**
+
+> *The post:* "Nobody actually enjoys the long run. They enjoy having done it, which is a completely different thing, and the sport would be more honest if it said so."
+>
+> *Staff said / I said:* `hot_take` / `reaction`
+>
+> *My call, and why:* Staff is right. It sounds personal and reflective, but "nobody" makes it a claim about everyone. Rule 2 says a general claim is `hot_take`. I followed the tone instead of the rule.
+>
+> *Which pile:* (a)
+
+**12.**
+
+> *The post:* "Every injury thread on this forum is the same injury and the same three replies."
+>
+> *Staff said / I said:* `hot_take` / `reaction`
+>
+> *My call, and why:* Staff is right. It sounds like the writer's own observation, but it is a general claim about every thread, and no count is given. Rule 2 covers this.
+>
+> *Which pile:* (a)
+
+**13.**
+
+> *The post:* "Got up at 5, drove ninety minutes, and it's cancelled. Standing in the car park in the rain reading the email."
+>
+> *Staff said / I said:* `reaction` / `analysis`
+>
+> *My call, and why:* Staff is right. The numbers only describe what happened to the writer. Nothing is argued from them. Rule 3 says a fact has to carry an argument to make a post `analysis`.
+>
+> *Which pile:* (a)
+
+**14.**
+
+> *The post:* "First run back after eight weeks out. Two miles, slower than my warm-up used to be, and I don't care even slightly."
+>
+> *Staff said / I said:* `reaction` / `analysis`
+>
+> *My call, and why:* Staff is right. This is about the writer's own run and feelings. "Eight weeks" and "two miles" describe the run, they don't argue anything. Rule 3 covers this.
+>
+> *Which pile:* (a)
+
+**15.**
+
+> *The post:* "Watching the last 400 of that and I had to stand up. Still standing up actually."
+>
+> *Staff said / I said:* `reaction` / `analysis`
+>
+> *My call, and why:* Staff is right. This is an immediate response to a race happening now, with no argument. "400" is just which part of the race it was. Rule 3 covers this.
+>
+> *Which pile:* (a)
+
+**16.**
+
+> *The post:* "Blew up at 20 with the pace band still in my hand like it was going to help. Rough one."
+>
+> *Staff said / I said:* `reaction` / `analysis`
+>
+> *My call, and why:* Staff is right. This is the writer's own bad race and how it felt. "20" says where it happened, it isn't evidence for a claim. Rule 3 covers this.
+>
+> *Which pile:* (a)
+
+**17.**
+
+> *The post:* "Third DNF this year. I don't really want to talk about it, just wanted to put it somewhere."
+>
+> *Staff said / I said:* `reaction` / `hot_take`
+>
+> *My call, and why:* Staff is right. The writer is reporting their own state, not making a claim about the world, so Rule 2 makes it `reaction`. "Third this year" is a count, but nothing is argued from it.
+>
+> *Which pile:* (a)
 
 **What the pattern in my disagreements tells me:**
+
+14 of my 17 disagreements are pile (a): the rule covered the post and I applied it loosely. Two are pile (b) and one is pile (c). My mistakes go in two opposite directions on the same question, "does the fact carry the argument?". When a post had any number in it (a time, a distance, a count), I often called it `analysis`, even when the number only described what happened or was part of the claim (8 posts like this). But when a post really did argue from data, I called it `hot_take` (4 posts), probably because I used my own unit 5 rule that a small story can't carry a claim. I also called 4 general claims `reaction` because they sounded personal, even though Rule 2 says a general claim is `hot_take`. This means I don't apply "what counts as evidence" the same way every time. That is a consistency problem, and it probably affects my own 206 labels too, especially the `backed` vs `hot_take` boundary.
 
 ---
 
