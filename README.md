@@ -599,7 +599,9 @@ All three seeds ran on an Apple Silicon GPU (MPS) with torch 2.14.1. Bold number
 
 **Did it help, and how do I know:**
 
-Yes, a lot. Side by side:
+Yes. Training for 10 epochs instead of 3 raised accuracy from 0.387 to 0.613–0.742, and I went from 1 to 3 criteria met. But the scores still jump a lot between seeds, and criterion 2 is still missed.
+
+Side by side:
 
 | Measure | Before (3 epochs) | After (10 epochs) |
 |---|---|---|
@@ -624,10 +626,25 @@ Three things are still not good:
 
 <!-- For each criterion still missed: what you'd do, and why you stopped. -->
 
+**Criterion 2 (per-label F1) — still MISSED.**
+Every label passes on at least one seed, but not on all three. `vent` fails on seed 42 (0.462). `advice` (0.333) and `backed` (0.286) fail on seed 7.
+- *What I'd do:* First, relabel the `vent` / `hot_take` boundary with one clear rule: if a post makes any claim about the world, it is not `vent`, whatever the tone. Then retrain on the same three seeds. After that, add about 30 more `backed` and `advice` posts. They have only 6 and 5 posts in the test split, so one post changes their F1 a lot.
+- *Why I stopped:* The milestone allows one change per run. I used it on training length, because that is what my diagnosis pointed at. I ran out of time for a second round.
+
+**Criterion 4 (consistency) — still MISSED (10 / 20).**
+Retraining can't fix this. Only my labelling can.
+- *What I'd do:* Write a sharper rule for `vent` vs `hot_take`: tone doesn't count, only whether there is a general claim. Relabel every `vent` and `hot_take` row in `labels.csv` with that rule. Then wait at least three days and do the blind re-label again.
+- *Why I stopped:* The check needs a three-day gap. I didn't have that time before the deadline.
+
+**Stability.**
+After the change, accuracy moved 0.129 across seeds. That is more than 10 points. The test split has only 31 posts, so the scores will keep jumping. The real fix is more data, not more training.
+
 **The gap between what I meant my labels to capture and what the model
 learned:**
 
 <!-- Two sentences. Your confusion matrix is the evidence. -->
+
+I meant `vent` vs `hot_take` to be about the writer vs about the world, but the model mixes them up both ways (4 `vent` → `hot_take`, 2 back), on the same pair I flipped 7 times when I re-labelled, so it likely learned tone, not my rule. I meant `backed` to need evidence that carries the claim, but 3 of the 6 `backed` posts were called `hot_take`, so the model doesn't yet notice whether evidence is there.
 
 <!-- ═════════════════════════════════════════════════════════════════════
 
