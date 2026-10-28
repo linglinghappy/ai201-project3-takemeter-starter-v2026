@@ -139,6 +139,8 @@ Sarcasm is labelled by what it actually means, not its literal words. When a pos
 <!-- Where you collected from, how you labelled, your counts, and three hard
      cases. -->
 
+**Consistency check dates:** first labelled the 20 `cold` posts on or before 2026-10-20 (when `labels.csv` was first committed) · re-labelled them blind on 2026-10-27, saved as `relabel_check.csv`.
+
 **Where the posts came from:** Public comments from r/csMajors. I copied and pasted them by hand, and I kept each comment whole. The threads cover return offers, interview updates, the new-grad job market, backup majors, AI and coding jobs, and why CS grads like living in NYC. I did not use a scraper.
 
 **How I labelled them:** 
@@ -290,14 +292,14 @@ I also ran the baseline once with bare label names instead of my definitions. Ba
 | 1. Overall accuracy | ≥ 0.60 in all three seeds | 0.387 | 0.387 | 0.387 | MISSED |
 | 2. Per-label F1 | `hot_take`, `vent`, `advice` ≥ 0.50; `backed` ≥ 0.40 | hot_take 0.558, vent 0.000, advice 0.000, backed 0.000 | hot_take 0.558, vent 0.000, advice 0.000, backed 0.000 | hot_take 0.558, vent 0.000, advice 0.000, backed 0.000 | MISSED |
 | 3. Balance | every label ≥ 30 posts, none > 40% | smallest 36 (`advice`), largest 39.8% (`hot_take`) | same (dataset-level) | same (dataset-level) | MET |
-| 4. Consistency | ≥ 16 of 20 `cold` posts match on re-label | not measured yet | not measured yet | not measured yet | NOT MEASURED |
+| 4. Consistency | ≥ 16 of 20 `cold` posts match on re-label | 10 / 20 | same (dataset-level) | same (dataset-level) | MISSED |
 | 5. Confidence | most-confident third minus least-confident third ≥ 0.15 | 0.40 − 0.30 = 0.10 | 0.70 − 0.10 = 0.60 | 0.60 − 0.30 = 0.30 | MISSED |
 
 All three seeds ran on an Apple Silicon GPU (MPS) with torch 2.14.1.
 
 Accuracy was 0.387 on all three seeds (spread 0.000), but that is not a sign of stability. On every seed the model predicted `hot_take` for every test post. The split is stratified, so every seed's test split has 12 `hot_take` posts out of 31, and always guessing `hot_take` scores 12 / 31 = 0.387 no matter which posts land in the test set. Training loss only fell from about 1.35 to 1.28 (random guessing over four labels is about 1.39), and with 144 training posts, batch size 16 and 3 epochs the model only took 27 training steps. The model is underfitting: it learned the most common label, not the difference between labels.
 
-Criterion 4 is not measured yet: I have not made `relabel_check.csv`. Criterion 5's numbers don't mean much here. Every prediction is `hot_take`, so each third's accuracy just counts how many real `hot_take` posts it happens to contain.
+Criterion 4 doesn't depend on the seed: it compares my two labellings of the same 20 `cold` posts in `relabel_check.csv`. Criterion 5's numbers don't mean much here. Every prediction is `hot_take`, so each third's accuracy just counts how many real `hot_take` posts it happens to contain.
 
 ### Confusion matrix
 
@@ -331,11 +333,11 @@ The biggest off-diagonal number is 8: all 8 real `vent` posts were called `hot_t
 
 | # | Criterion | Target | Verdict | How I decided |
 | --- | ----------- | -------- | --------- | --------------- |
-| 1 |           |        |         |               |
-| 2 |           |        |         |               |
-| 3 |           |        |         |               |
-| 4 |           |        |         |               |
-| 5 |           |        |         |               |
+| 1 | Overall accuracy | ≥ 0.60 in all three seeds | MISSED | 0.387 on every seed, far below 0.60. |
+| 2 | Per-label F1 | `hot_take`, `vent`, `advice` ≥ 0.50; `backed` ≥ 0.40, in all three seeds | MISSED | Only `hot_take` passes (0.558). `vent`, `advice` and `backed` are 0.000 on every seed. |
+| 3 | Balance | every label ≥ 30 posts, none > 40% | MET | Smallest label is `advice` with 36 posts; largest is `hot_take` at 39.8%. |
+| 4 | Consistency | ≥ 16 of 20 `cold` posts match on blind re-label | MISSED | 10 of 20 matched in `relabel_check.csv`. |
+| 5 | Confidence | most-confident third minus least-confident third ≥ 0.15 in all three seeds | MISSED | Gaps were 0.10, 0.60 and 0.30. Seed 42 is below 0.15, so it doesn't hold across all three. |
 
 **Diagnoses**
 
@@ -347,6 +349,18 @@ The biggest off-diagonal number is 8: all 8 real `vent` posts were called `hot_t
      ⚠️ Use your agreement report as evidence. It is the only instrument you
      have that can tell a LABELLING problem from a MODEL problem, and this
      section is graded on whether you used it that way. -->
+
+**Criterion 1 (accuracy) — a model problem: the model is undertrained and only guesses the biggest label.**
+Accuracy is 0.387 on all three seeds, which is exactly 12 / 31, the share of `hot_take` in every stratified test split. The confusion matrix shows why: on every seed, all 31 test posts were predicted `hot_take`. Training loss only went from about 1.35 to 1.28 (random guessing over four labels is about 1.39), and validation accuracy stayed at 0.387 after every epoch. With 144 training posts, batch size 16 and 3 epochs, the model only took 27 training steps. The agreement report is what tells me this is not mainly a labelling problem. My disagreements with staff were on two specific boundaries ("does the fact carry the argument?" and "is it about the writer or the world?"). If messy labels were the main cause, the model would mix up those pairs and still get the other labels right. Instead it predicts `hot_take` for everything, including `backed` and `advice` posts that have nothing to do with those boundaries. The task itself is reachable: the zero-shot baseline with bare label names already scores 0.452.
+
+**Criterion 2 (per-label F1) — mostly the same model problem, plus too few examples for `backed` and `advice`, plus an inconsistent `vent` / `hot_take` boundary.**
+`vent`, `advice` and `backed` score 0.000 because the model never predicts them, which is the undertraining from criterion 1. Two other causes will matter once the model does learn. First, `backed` has only 26 training and 6 test posts, and `advice` has 25 and 5, so their F1 will be noisy: one post moves it a lot. Second, my own labels on `vent` vs `hot_take` are inconsistent (see criterion 4): 7 of my 10 re-label changes were on that pair, and the biggest off-diagonal in my matrix is also on that pair (8 `vent` posts called `hot_take`). Right now I can't separate that labelling effect from the undertraining, because the model calls everything `hot_take` anyway.
+
+**Criterion 4 (consistency) — a labelling problem: I applied the `vent` / `hot_take` boundary two different ways.**
+Only 10 of 20 posts got the same label the second time. 7 of the 10 changes were between `vent` and `hot_take`: 3 went from `vent` to `hot_take` and 4 from `hot_take` to `vent`. The other 3 involved `advice` (`vent` → `advice`, `hot_take` → `advice`, `advice` → `backed`). So it isn't that I changed my mind about one rule; I'm flipping both ways on the same boundary. My rule says a post that draws any conclusion about the world is not `vent`, but in practice I decided by tone: posts that sounded frustrated became `vent`, and posts that sounded calm became `hot_take`. The agreement report shows the same habit on someone else's rules. I called 4 general claims `reaction` because they sounded personal, even though staff Rule 2 (about the writer vs about the world) covered them, and that rule is the same idea as my `vent` rule. So this is my labelling, not the model, and it is also in my training data: the cold labels in `labels.csv` are the first-pass ones.
+
+**Criterion 5 (confidence) — the same model problem as criterion 1.**
+The gap is 0.10 on seed 42, below the 0.15 target. But the model predicts `hot_take` for every post, so the "most confident" and "least confident" thirds only differ in how many real `hot_take` posts they happen to contain. The confidence has no meaning yet because the model hasn't learned to separate the labels. The criterion itself is clear and measurable, so I am not revising it.
 
 ---
 
